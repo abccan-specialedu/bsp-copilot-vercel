@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>행동지원계획 코파일럿 (BSP Copilot)</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
+</head>
+<body>
+    <header class="app-header">
+        <div class="header-container">
+            <h1>✨ 행동지원계획 코파일럿</h1>
+            <p>특수교사를 위한 AI 맞춤형 행동지원계획(BSP) 초안 생성기</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <form id="bspForm" class="bsp-form">
+            <section class="card">
+                <h2>1. 학생 기본정보</h2>
+                <div class="grid-2">
+                    <div class="form-group">
+                        <label for="grade">학년</label>
+                        <input type="text" id="grade" name="grade" placeholder="예: 초등학교 3학년" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="disability">장애유형</label>
+                        <input type="text" id="disability" name="disability" placeholder="예: 자폐성장애" required>
+                    </div>
+                    <div class="form-group full-width">
+                        <label>성별</label>
+                        <div class="radio-group">
+                            <label><input type="radio" name="gender" value="남" required> 남</label>
+                            <label><input type="radio" name="gender" value="여"> 여</label>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="card">
+                <h2>2. 표적행동 (문제행동)</h2>
+                <div class="form-group">
+                    <label for="behaviorName">문제행동 이름</label>
+                    <input type="text" id="behaviorName" name="behaviorName" placeholder="예: 자리 이탈 및 소리 지르기" required>
+                </div>
+                <div class="form-group">
+                    <label for="behaviorDesc">문제행동 구체적 설명 (조작적 정의)</label>
+                    <textarea id="behaviorDesc" name="behaviorDesc" rows="3" placeholder="행동을 관찰 가능한 형태로 구체적으로 적어주세요." required></textarea>
+                </div>
+            </section>
+
+            <section class="card">
+                <h2>3. 행동 특성 분석</h2>
+                
+                <div class="form-group">
+                    <label>③ 추정되는 행동기능</label>
+                    <div class="radio-group wrap">
+                        <label><input type="radio" name="function" value="관심획득" required> 관심획득</label>
+                        <label><input type="radio" name="function" value="요구물 획득"> 요구물 획득</label>
+                        <label><input type="radio" name="function" value="과제 회피"> 과제 회피</label>
+                        <label><input type="radio" name="function" value="감각자극"> 감각자극</label>
+                        <label><input type="radio" name="function" value="아직 확실하지 않음"> 아직 확실하지 않음</label>
+                    </div>
+                </div>
+
+                <div class="grid-2">
+                    <div class="form-group">
+                        <label>④ 행동 강도</label>
+                        <div class="radio-group">
+                            <label><input type="radio" name="intensity" value="낮음" required> 낮음</label>
+                            <label><input type="radio" name="intensity" value="보통"> 보통</label>
+                            <label><input type="radio" name="intensity" value="높음"> 높음</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>⑤ 발생 빈도</label>
+                        <div class="radio-group">
+                            <label><input type="radio" name="frequency" value="가끔" required> 가끔</label>
+                            <label><input type="radio" name="frequency" value="자주"> 자주</label>
+                            <label><input type="radio" name="frequency" value="매우 자주"> 매우 자주</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>⑥ 주로 발생하는 장소 (다중 선택 가능)</label>
+                    <div class="checkbox-group wrap">
+                        <label><input type="checkbox" name="location" value="교실"> 교실</label>
+                        <label><input type="checkbox" name="location" value="통합학급"> 통합학급</label>
+                        <label><input type="checkbox" name="location" value="체육"> 체육</label>
+                        <label><input type="checkbox" name="location" value="급식"> 급식</label>
+                        <label><input type="checkbox" name="location" value="복도"> 복도</label>
+                        <label><input type="checkbox" name="location" value="운동장"> 운동장</label>
+                        <label><input type="checkbox" name="location" value="기타"> 기타</label>
+                    </div>
+                </div>
+            </section>
+
+            <section class="card">
+                <h2>4. ABC 관찰 기록</h2>
+                <div class="form-group">
+                    <label for="antecedent">⑦ 선행사건 (Antecedent) - 행동 직전에 일어난 일</label>
+                    <textarea id="antecedent" name="antecedent" rows="3" placeholder="예: 교사가 수학 학습지를 나누어 주었다." required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="behavior">⑧ 행동 (Behavior) - 학생이 한 행동</label>
+                    <textarea id="behavior" name="behavior" rows="3" placeholder="예: 학습지를 찢고 책상에 엎드려 소리를 질렀다." required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="consequence">⑨ 결과 (Consequence) - 행동 직후 환경의 변화</label>
+                    <textarea id="consequence" name="consequence" rows="3" placeholder="예: 교사가 학습지를 치워주고 진정할 때까지 기다려주었다." required></textarea>
+                </div>
+            </section>
+
+            <section class="card">
+                <h2>5. 추가 정보</h2>
+                <div class="form-group">
+                    <label for="strengths">⑩ 학생의 강점 및 좋아하는 것</label>
+                    <textarea id="strengths" name="strengths" rows="3" placeholder="학생의 강점을 바탕으로 중재를 계획합니다." required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="interventions">⑪ 현재 시도한 중재 및 결과</label>
+                    <textarea id="interventions" name="interventions" rows="3" placeholder="지금까지 시도해본 방법과 그 효과를 적어주세요." required></textarea>
+                </div>
+            </section>
+
+            <button type="submit" class="submit-btn" id="generateBtn">
+                <span class="btn-text">✨ AI 행동지원계획 생성</span>
+            </button>
+        </form>
+
+        <div id="loadingOverlay" class="hidden">
+            <div class="spinner"></div>
+            <p id="loadingMessage">학생 정보를 분석하고 있습니다...</p>
+        </div>
+
+        <section id="resultSection" class="card hidden">
+            <div class="result-header">
+                <h2>📋 AI 맞춤형 행동지원계획(BSP)</h2>
+                <div class="action-buttons">
+                    <button type="button" class="action-btn" id="copyBtn">복사</button>
+                    <button type="button" class="action-btn" id="printBtn">인쇄 / PDF 저장</button>
+                </div>
+            </div>
+            
+            <div id="resultContent" class="accordion-container">
+                </div>
+        </section>
+    </main>
+    <script src="js/script.js"></script>
+</body>
+</html>
